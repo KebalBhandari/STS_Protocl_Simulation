@@ -1,4 +1,5 @@
 Practical Implementation of STS Protocol
+
  Introduction
  The Station To Station Protocol (STS) is a cryptographic key agreement scheme. The protocol is
  based on the classic Diffie-Hellman, which is not secure against a man-in-the-middle attack.
@@ -7,17 +8,20 @@ Practical Implementation of STS Protocol
  The following data must be generated before initiating the protocol.
  ● Anasymmetricsignature keypair for each party
  ● Keyestablishment parameters
+ 
 Through the exchange of Diffie-Hellman (DH) parameters and signed certificates, both
  participants verify each other's identities and establish a shared session key for encrypted
  message exchange. This simulation covers the following components:
  ● Certificate Authority (CA): Responsible for generating and signing certificates.
  ● Participants (Alice and Bob): Engage in key exchange and secure communication using
  the STS protocol.
+ 
  Code Structure
  I have divided this simulation structure into two primary classes : CertificateAuthority and
  Participants.
  Each class contains specific functions to manage keys, certificates, DH
  parameters, and secure communication.
+ 
  1. Certificate Authority (CA) Class:
  The __init__() method sets up the CA by checking for existing certificates; if none are
  found, it produces and stores new ones; otherwise, it loads the current credentials. The
@@ -35,7 +39,8 @@ Through the exchange of Diffie-Hellman (DH) parameters and signed certificates, 
  them as needed. The sign_certificate(csr) function validates a participant's Certificate
  Signing Request (CSR), signs it using the CA's private key, and returns an X.509
  certificate with the given validity.
- 2. Participant (Alice & Bob) Class:
+
+ 3. Participant (Alice & Bob) Class:
  The __init__() function initializes participant characteristics, produces or loads
  Diffie-Hellman (DH) parameters if they are not previously stored, and creates folders to
  store keys and certificates. The generate_dh_parameters() method generates DH
@@ -68,16 +73,19 @@ encryption
  key and validates its details, while verify_signature(data, signature, public_key) ensures
  data integrity by verifying the signature with the sender's public key.
  Output
+
  Practical Application
  This simulation models a real-world secure communication system where identity verification,
  key exchange, and encrypted messaging are critical for secure interactions. In actual systems,
  similar principles protect secure websites, messaging apps, and other digital communications.
+
 Conclusion
  This STS protocol simulation shows the fundamental components of setting up a secure and
  authenticated communication channel between two parties (Alice & Bob). By incorporating
  essential cryptographic principles such as DH key exchange, RSA signatures, certificate
  authorities, and symmetric encryption, the simulation presents a full illustration of secure
  communication protocols.
+
  References
  1. Wikipedia contributors. (2024, March 29). Station-to-Station protocol. Wikipedia.
  https://en.wikipedia.org/wiki/Station-to-Station_protocol
